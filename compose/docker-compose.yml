@@ -1,0 +1,9 @@
+version: "3"
+services:
+  nx-builder:
+    image: nx-builder
+    build: ../nx-builder
+    volumes:
+      - ./build:/opt/sources
+      - ~/.m2/repository:/opt/repository
+
