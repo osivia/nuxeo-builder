@@ -16,7 +16,7 @@ COPY settings.xml /opt
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
-ENV NX_VERSION=release-10.10-HF61
+ENV NX_VERSION=release-10.10-HF62
 
 CMD ["start"]
 

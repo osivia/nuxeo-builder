@@ -2,14 +2,76 @@
 
 	<localRepository>/opt/repository</localRepository>
 
-    <mirrors>
+	<mirrors>
 		<mirror>
-            <id>maven-public</id>
-            <mirrorOf>central</mirrorOf>
-            <url>https://repo.maven.apache.org/maven2/</url>
-        </mirror>
+			<id>maven-public</id>
+			<mirrorOf>central</mirrorOf>
+			<url>https://repo.maven.apache.org/maven2/</url>
+		</mirror>
 
-    </mirrors>
+	</mirrors>
+
+
+
+	<profiles>
+		<profile>
+			<id>nexus</id>
+			<repositories>
+
+
+				<repository>
+					<id>osivia-snapshots</id>
+					<url>http://www.osivia.org/nexus/content/repositories/osivia-snapshots/
+					</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+						<updatePolicy>always</updatePolicy>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>osivia-thirdparty</id>
+					<url>http://www.osivia.org/nexus/content/repositories/thirdparty/
+					</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+
+
+			</repositories>
+
+
+			<properties>
+				<altSnapshotDeploymentRepository>osivia-snapshots::default::http://www.osivia.org/nexus/content/repositories/osivia-snapshots/
+				</altSnapshotDeploymentRepository>
+				<altReleaseDeploymentRepository>osivia-thirdparty::default::http://www.osivia.org/nexus/content/repositories/thirdparty/
+				</altReleaseDeploymentRepository>
+			</properties>
+		</profile>
+	</profiles>
+
+	<activeProfiles>
+		<activeProfile>nexus</activeProfile>
+	</activeProfiles>
+
+	<servers>
+		<server>
+			<id>osivia-snapshots</id>
+			<username>deployment</username>
+			<password>XXXX</password>
+		</server>
+		<server>
+			<id>osivia-thirdparty</id>
+			<username>deployment</username>
+			<password>XXXX</password>
+		</server>
+	</servers>
 
 
 </settings>

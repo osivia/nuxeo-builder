@@ -29,6 +29,6 @@ if [ "$1" = "start" ]; then
     python clone.py ${NX_VERSION} -a
 
     echo "Build maven"
-    mvn clean install --settings /opt/settings.xml -T 6 --fail-at-end -Paddons,distrib -DskipTests
+    mvn clean source:jar deploy --settings /opt/settings.xml -T 6 --fail-at-end -Paddons,distrib -DskipTests
     
 fi
